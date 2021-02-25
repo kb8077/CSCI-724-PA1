@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://it.bmc.uu.se/andlov/php/uup-soap/example/demo/calculator.php" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://it.bmc.uu.se/andlov/php/uup-soap/example/demo/calculator.php">
+  <wsdl:documentation>The calculator SOAP service.
+  
+  It's almost mandatory to provide a calculator web service for testing,
+  so here we go.
+ 
+  @author Anders Lövgren (Nowise Systems)</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://it.bmc.uu.se/andlov/php/uup-soap/example/demo/calculator.php">
+      <xsd:element name="add" type="tns:add"/>
+      <xsd:complexType name="add">
+        <xsd:sequence>
+          <xsd:element name="a" type="xsd:float" maxOccurs="1"/>
+          <xsd:element name="b" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="addResponse" type="tns:addResponse"/>
+      <xsd:complexType name="addResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="substract" type="tns:substract"/>
+      <xsd:complexType name="substract">
+        <xsd:sequence>
+          <xsd:element name="a" type="xsd:float" maxOccurs="1"/>
+          <xsd:element name="b" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="substractResponse" type="tns:substractResponse"/>
+      <xsd:complexType name="substractResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="divide" type="tns:divide"/>
+      <xsd:complexType name="divide">
+        <xsd:sequence>
+          <xsd:element name="a" type="xsd:float" maxOccurs="1"/>
+          <xsd:element name="b" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="divideResponse" type="tns:divideResponse"/>
+      <xsd:complexType name="divideResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="multiply" type="tns:multiply"/>
+      <xsd:complexType name="multiply">
+        <xsd:sequence>
+          <xsd:element name="a" type="xsd:float" maxOccurs="1"/>
+          <xsd:element name="b" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="multiplyResponse" type="tns:multiplyResponse"/>
+      <xsd:complexType name="multiplyResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="modulo" type="tns:modulo"/>
+      <xsd:complexType name="modulo">
+        <xsd:sequence>
+          <xsd:element name="a" type="xsd:float" maxOccurs="1"/>
+          <xsd:element name="b" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="moduloResponse" type="tns:moduloResponse"/>
+      <xsd:complexType name="moduloResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:float" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="add">
+    <wsdl:part element="tns:add" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="substract">
+    <wsdl:part element="tns:substract" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="divide">
+    <wsdl:part element="tns:divide" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="multiply">
+    <wsdl:part element="tns:multiply" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="modulo">
+    <wsdl:part element="tns:modulo" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part element="tns:addResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="substractResponse">
+    <wsdl:part element="tns:substractResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="divideResponse">
+    <wsdl:part element="tns:divideResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="multiplyResponse">
+    <wsdl:part element="tns:multiplyResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="moduloResponse">
+    <wsdl:part element="tns:moduloResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="CalculatorPortType">
+    <wsdl:operation name="add">
+      <wsdl:documentation>Add two numbers.
+          
+          @param float a The first number.
+          @param float b The second number.
+          @return float</wsdl:documentation>
+      <wsdl:input message="tns:add" name="add"/>
+      <wsdl:output message="tns:addResponse" name="addResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="substract">
+      <wsdl:documentation>Substract two numbers.
+          
+          @param float a The first number.
+          @param float b The second number.
+          @return float</wsdl:documentation>
+      <wsdl:input message="tns:substract" name="substract"/>
+      <wsdl:output message="tns:substractResponse" name="substractResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="divide">
+      <wsdl:documentation>Divide two numbers.
+          
+          @param float a The first number.
+          @param float b The second number.
+          @return float</wsdl:documentation>
+      <wsdl:input message="tns:divide" name="divide"/>
+      <wsdl:output message="tns:divideResponse" name="divideResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="multiply">
+      <wsdl:documentation>Multiply two numbers.
+          
+          @param float a The first number.
+          @param float b The second number.
+          @return float</wsdl:documentation>
+      <wsdl:input message="tns:multiply" name="multiply"/>
+      <wsdl:output message="tns:multiplyResponse" name="multiplyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="modulo">
+      <wsdl:documentation>Calculate reminder.
+          
+          @param float a The first number.
+          @param float b The second number.
+          @return float</wsdl:documentation>
+      <wsdl:input message="tns:modulo" name="modulo"/>
+      <wsdl:output message="tns:moduloResponse" name="moduloResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorBinding" type="tns:CalculatorPortType">
+    <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="add">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="substract">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="divide">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="multiply">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="modulo">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalculatorService">
+    <wsdl:port xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="CalculatorPort" binding="tns:CalculatorBinding">
+      <soap-env:address xmlns="http://schemas.xmlsoap.org/wsdl/soap/" location="http://it.bmc.uu.se/andlov/php/uup-soap/example/demo/calculator.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
