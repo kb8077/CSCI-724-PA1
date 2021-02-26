@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    
+    <body>
+        <form action="currCalculate" method="post" enctype="multipart/form-data">
+            <input type="text" id="curr1Amount" name="curr1Amount" value={{ curr1Amount }}>
+            <select name="Curr1" id="Curr1">
+                {% for i in currList %}
+                    {% if i == curr1 %}    
+                        <option value={{ i }} selected>{{ i }}</option>
+                    {% else %}
+                        <option value={{ i }}>{{ i }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <select name="operator" id="operator">
+                <option value=+ selected>+</option>
+                <option value=- >-</option>
+                <option value=* >*</option>
+                <option value=/ >/</option>
+            </select>
+            <input type="text" id="curr2Amount" name="curr2Amount" value={{ curr2Amount }}>
+            <select name="Curr2" id="Curr2">
+                {% for i in currList %}
+                    {% if i == curr2 %}    
+                        <option value={{ i }} selected>{{ i }}</option>
+                    {% else %}
+                        <option value={{ i }}>{{ i }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            =
+            <input type="text" id="outAmount" name="outAmount" value={{ outAmount }}>
+            <select name="OutCurr" id="OutCurr">
+                {% for i in currList %}
+                    {% if i == outCurr %}    
+                        <option value={{ i }} selected>{{ i }}</option>
+                    {% else %}
+                        <option value={{ i }}>{{ i }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Calculate">
+        </form>
+    </body>
+</html>

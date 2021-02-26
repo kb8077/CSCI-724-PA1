@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    
+    <body>
+        <form action="currConvert" method="post" enctype="multipart/form-data">
+            <input type="text" id="curr1Amount" name="curr1Amount" value={{ curr1Amount }}>
+            <select name="Curr1" id="Curr1">
+                {% for i in currList %}
+                    {% if i == curr1 %}    
+                        <option value={{ i }} selected>{{ i }}</option>
+                    {% else %}
+                        <option value={{ i }}>{{ i }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <p>&harr;</p>
+            <input type="text" id="curr2Amount" name="curr2Amount" value={{ curr2Amount }}>
+            <select name="Curr2" id="Curr2">
+                {% for i in currList %}
+                    {% if i == curr2 %}    
+                        <option value={{ i }} selected>{{ i }}</option>
+                    {% else %}
+                        <option value={{ i }}>{{ i }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Convert">
+        </form>
+    </body>
+</html>
