@@ -2,10 +2,26 @@ import pandas as pd
 from zeep import Client
 import requests
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
+
+@app.route('/home', methods = ['POST', 'GET'])
+@app.route('/', methods = ['POST', 'GET'])
+def homePage():
+    if request.method == 'POST':
+        data = request.form
+        if data['feature'] == '1':
+            return redirect(url_for('currConvertAPI'))
+        elif data['feature'] == '2':
+            return redirect(url_for('calculator'))
+        elif data['feature'] == '3':
+            return redirect(url_for('getHeritageSites'))
+
+
+    else:
+        return render_template('home.html')
 
 @app.route('/currConvert', methods = ['POST', 'GET'])
 def currConvertAPI():
