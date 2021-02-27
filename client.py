@@ -25,7 +25,7 @@ def homePage():
 
 @app.route('/currConvert', methods = ['POST', 'GET'])
 def currConvertAPI():
-    df = pd.read_csv('codes-all_csv.csv')
+    df = pd.read_csv('resources/codes-all_csv.csv')
     currCodes = df['AlphabeticCode'].to_list()
     currCodes = [x for x in currCodes if type(x) is not float]
 
@@ -63,7 +63,7 @@ def currConvert(fromCurr, toCurr, amount):
 
 @app.route('/currCalculate', methods = ['POST', 'GET'])
 def calculator():
-    df = pd.read_csv('codes-all_csv.csv')
+    df = pd.read_csv('resources/codes-all_csv.csv')
     currCodes = df['AlphabeticCode'].to_list()
     currCodes = [x for x in currCodes if type(x) is not float]
 
@@ -98,28 +98,28 @@ def calculator():
         return render_template('calculator.html', currList=currCodes)
 
 def calculator_add(op1Curr, op1Amount, op2Curr, op2Amount, outCurr):
-    wsdl = "calc.wsdl"
+    wsdl = "resources/calc.wsdl"
     client = Client(wsdl)
     curr2 = currConvert(op2Curr, op1Curr, op2Amount)
     outAmount = client.service.add(op1Amount,curr2)
     return currConvert(op1Curr, outCurr, outAmount)
 
 def calculator_substract(op1Curr, op1Amount, op2Curr, op2Amount, outCurr):
-    wsdl = "calc.wsdl"
+    wsdl = "resources/calc.wsdl"
     client = Client(wsdl)
     curr2 = currConvert(op2Curr, op1Curr, op2Amount)
     outAmount = client.service.substract(op1Amount,curr2)
     return currConvert(op1Curr, outCurr, outAmount)
 
 def calculator_multiply(op1Curr, op1Amount, op2Curr, op2Amount, outCurr):
-    wsdl = "calc.wsdl"
+    wsdl = "resources/calc.wsdl"
     client = Client(wsdl)
     curr2 = currConvert(op2Curr, op1Curr, op2Amount)
     outAmount = client.service.multiply(op1Amount,curr2)
     return currConvert(op1Curr, outCurr, outAmount)
 
 def calculator_divide(op1Curr, op1Amount, op2Curr, op2Amount, outCurr):
-    wsdl = "calc.wsdl"
+    wsdl = "resources/calc.wsdl"
     client = Client(wsdl)
     curr2 = currConvert(op2Curr, op1Curr, op2Amount)
     outAmount = client.service.divide(op1Amount,curr2)
@@ -134,7 +134,7 @@ def getHeritageSites():
         return render_template('heritageSearch.html', query=cityQuery, places=places)
 
     else:
-        return render_template('heritageSearch.html')
+        return render_template('heritageSearch.html', defaultval='City,State,Country')
 
 def getCityLatLong(searchQuery):
     API_key = "9469c4d644aa4bc28a8b73ed9942b442"
