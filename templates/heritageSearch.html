@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    
+    <body>
+        <form action="heritageSearch" method="post" enctype="multipart/form-data">
+            <input type="text" id="query" name="query" value={{ query }}>
+            <input type="submit" value="Search heritage sites">
+            <br></br>
+            <br></br>
+            
+            Here are some famous heritage sites in {{ query }} :
+            <ol>
+                {% for i in places %}
+                    <li>{{ i }}</li>
+                {% endfor %}
+            </ol> 
+              
+            
+        </form>
+    </body>
+</html>

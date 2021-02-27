@@ -52,7 +52,6 @@ def calculator():
     currCodes = [x for x in currCodes if type(x) is not float]
 
     if request.method == 'POST':
-        
         data = request.form
         op1Curr = data['Curr1']
         op2Curr = data['Curr2']
@@ -110,8 +109,20 @@ def calculator_divide(op1Curr, op1Amount, op2Curr, op2Amount, outCurr):
     outAmount = client.service.divide(op1Amount,curr2)
     return currConvert(op1Curr, outCurr, outAmount)
 
+@app.route('/heritageSearch', methods = ['POST', 'GET'])
+def getHeritageSites():
+    if request.method == 'POST':
+        data = request.form
+        cityQuery = data['query']
+        places = getPlaces(*getCityLatLong(cityQuery))
+        return render_template('heritageSearch.html', query=cityQuery, places=places)
+
+    else:
+        return render_template('heritageSearch.html')
+
 def getCityLatLong(searchQuery):
-    resturl = "https://api.opencagedata.com/geocode/v1/json?key=9469c4d644aa4bc28a8b73ed9942b442&q="+searchQuery+"&pretty=1&no_annotations=1"
+    API_key = "9469c4d644aa4bc28a8b73ed9942b442"
+    resturl = "https://api.opencagedata.com/geocode/v1/json?key="+API_key+"&q="+searchQuery+"&pretty=1&no_annotations=1"
     response = requests.get(resturl)
     data = response.json()
     maxLat = str(data["results"][0]["bounds"]["northeast"]["lat"]) 
