@@ -1,5 +1,7 @@
 # CSCI-724-PA1
 
+This is a demo application to consume SOAP and RESTful APIs. It was a part of coursework of CSCI-724 Programming Assignment 1.
+
 This application is build using these APIs:
 
 1. (SOAP - WSDL)http://it.bmc.uu.se/andlov/php/uup-soap/example/demo/calculator.php?docs=text
@@ -7,6 +9,7 @@ This application is build using these APIs:
 3. (REST)https://opencagedata.com/api
 4. (REST)https://www.currencyconverterapi.com/
 
+**Note**: Please do not use the same API keys that are in the code. You can get the API keys from the respective websites given above.
 
 ## Installation
 Create a virtual environment

@@ -35,12 +35,7 @@ def currConvertAPI():
         toCurr = data['Curr2']
         amount = float(data['curr1Amount'])
 
-        resturl = "https://free.currconv.com/api/v7/convert?q="+fromCurr+"_"+toCurr+"&compact=ultra&apiKey=789314263e83aa353fc0"
-        response1 = requests.get(resturl)
-        data = response1.json()
-        currency = data[fromCurr + '_' + toCurr]
-
-        convertedCurr = float(currency)*amount
+        convertedCurr = currConvert(fromCurr, toCurr, amount)
         return render_template('convertor.html',
                                 currList=currCodes, 
                                 curr1=fromCurr, 
@@ -53,7 +48,8 @@ def currConvertAPI():
 
 
 def currConvert(fromCurr, toCurr, amount):
-    resturl = "https://free.currconv.com/api/v7/convert?q="+fromCurr+"_"+toCurr+"&compact=ultra&apiKey=789314263e83aa353fc0"
+    API_key = "789314263e83aa353fc0"
+    resturl = "https://free.currconv.com/api/v7/convert?q="+fromCurr+"_"+toCurr+"&compact=ultra&apiKey="+API_key
     response1 = requests.get(resturl)
     data = response1.json()
     currency = data[fromCurr + '_' + toCurr]
