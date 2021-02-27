@@ -9,7 +9,7 @@ This application is build using these APIs:
 3. (REST)https://opencagedata.com/api
 4. (REST)https://www.currencyconverterapi.com/
 
-**Note**: Please do not use the same API keys that are in the code. You can get the API keys from the respective websites given above.
+**Note**: Please do not use the same API keys that are in the code. You can get the API keys from the respective websites given above. **Its free**
 
 ## Installation
 Create a virtual environment
